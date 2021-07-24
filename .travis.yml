@@ -8,3 +8,16 @@ before_install:
 
 script: 
   - docker run -e CI=true abaulderstone/docker-cra-template yarn test 
+
+
+deploy: 
+  provider: elasticbeanstalk
+  region: "ap-southeast-2"
+  app: "docker-cra-template"
+  env: "Dockercratemplate-env"
+  bucket_name: "elasticbeanstalk-ap-southeast-2-183817317903"
+  bucket_path: "docker-cra-template"
+  on:
+    branch: main
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: 
